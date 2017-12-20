@@ -1,4 +1,33 @@
-function mobilecheck() {
+function getMobileOperatingSystem() {
+	var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+	// Windows Phone must come first because its UA also contains "Android"
+	if (/windows phone/i.test(userAgent)) {
+		return "Windows Phone";
+	}
+
+	if (/android/i.test(userAgent)) {
+		return "Android";
+	}
+
+	// iOS detection from: http://stackoverflow.com/a/9039885/177710
+	if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+		return "iOS";
+	}
+
+	return "unknown";
+}
+
+function IsInQQWx() {
+	var ua = navigator.userAgent
+	var flag = false
+	if (ua.match(/MicroMessenger/i) || ua.replace(/MQQBrowser/i, '').match(/QQ/i)) {
+		flag = true
+	}
+	return flag
+}
+
+function Mobilecheck() {
 	var check = false;
 	(function (a) {
 		if (
@@ -38,4 +67,31 @@ function GoScroll(rate) {
 			if (document.body.scrollTop <= old)
 				clearInterval(interval);
 		}, 16)
-},
+}
+
+// 判断鼠标上滑下滑
+function ScrollEvent() {
+	var ff = window.navigator.userAgent
+	var ffe = /firefox/i
+
+	if (ffe.exec(ff)) {
+		dom.addEventListener('DOMMouseScroll', f)
+
+		function f(e) {
+			if (e.detail < 0) {
+
+			} else if (e.detail > 0) {
+
+			}
+		}
+	} else {
+		//非ff
+		dom.onmousewheel = function (e) {
+			if (e.wheelDelta > 0) {
+
+			} else if (e.wheelDelta < 0) {
+
+			}
+		}
+	}
+}
