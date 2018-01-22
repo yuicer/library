@@ -11,6 +11,12 @@ function getMobileOperatingSystem() {
   return "unknown"
 }
 
+/*
+  new add 直接使用 es6 的新特性 
+  var a = `a
+  a
+  ${object} `
+*/
 // 多行文本
 function hereDoc(f) {
   return f.toString().replace(/^[^\/]+\/\*!?\s?/, '').replace(/\*\/[^\/]+$/, '')
